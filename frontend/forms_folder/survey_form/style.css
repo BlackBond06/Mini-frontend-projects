@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;1,400&family=Barlow:wght@400;500&family=Bellefair&family=Josefin+Sans:wght@100;300;400;700&family=Play:wght@400;700&family=Poppins:wght@100;400&family=Work+Sans:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-white: #f3f3f3;
+  --color-darkblue: #1b1b32;
+  --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+  --color-green: #37af65;
+}
+
+body {
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--color-white);
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7)), url(https://cdn.freecodecamp.org/testable-projects-fcc/images/survey-form-background.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.container {
+  width: 100%;
+  margin: 3.125rem auto 0 auto;
+}
+.container .header {
+  display: block;
+  padding: 0 0.625rem;
+  margin-bottom: 1.875rem;
+}
+.container .header h1,
+.container .header p {
+  margin-top: 0;
+}
+.container .header .text-center {
+  text-align: center;
+}
+.container .header h1 {
+  font-weight: 400;
+  line-height: 1.2;
+  display: block;
+  display: block;
+  font-size: 2em;
+}
+.container .header p {
+  font-size: 1.05rem;
+}
+.container .header .description {
+  font-style: italic;
+  font-weight: 200;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+}
+.container form {
+  background: var(--color-darkblue-alpha);
+  padding: 2.5rem 0.625rem;
+  border-radius: 0.25rem;
+  display: block;
+  margin-top: 0em;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}/*# sourceMappingURL=style.css.map */
