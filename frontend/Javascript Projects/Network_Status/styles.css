@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;1,400&family=Barlow:wght@400;500&family=Bellefair&family=Josefin+Sans:wght@100;300;400;700&family=Play:wght@400;700&family=Poppins:wght@100;400&family=Work+Sans:wght@400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", "sans-serif";
+}
+
+body {
+  background: #e3f2fd;
+}
+
+.popup {
+  position: absolute;
+  left: 50%;
+  top: -25%;
+  visibility: hidden;
+  transform: translateX(-50%);
+  width: 490px;
+  display: flex;
+  border-radius: 5px;
+  border-top: 3px solid #ea4d67;
+  padding: 13px 17px 20px;
+  background: #fefefe;
+  box-shadow: 0 10px 25px rgba(52, 87, 220, 0.1);
+  transition: all 0.25s ease;
+}
+.popup .title {
+  font-size: 1.2rem;
+}
+.popup .desc {
+  font-size: 1.04rem;
+  margin: 3px 0, 10px;
+  color: #474747;
+}
+.popup .reconnect {
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 9px 15px;
+  border-radius: 4px;
+  background: #5372f0;
+}
+.popup .icon i {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 50%;
+  background: #ea4d67;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.show {
+  top: 0;
+  visibility: visible;
+}/*# sourceMappingURL=styles.css.map */
