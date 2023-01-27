@@ -60,4 +60,24 @@ body {
 .show {
   top: 0;
   visibility: visible;
+}
+
+.online {
+  border-color: aqua;
+}
+
+.online .icon i {
+  background: aqua;
+}
+
+.online .reconnect {
+  background: #bfbfbf;
+  pointer-events: none;
+}
+
+@media (max-width: 550px) {
+  .popup {
+    width: 100%;
+    padding: 10px 15px 17px;
+  }
 }/*# sourceMappingURL=styles.css.map */
