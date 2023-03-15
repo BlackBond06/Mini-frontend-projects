@@ -1,0 +1,2 @@
+This is a Random Quote Generator project. It is 1 out of 5 projects required to complete FreecodeCamp's Frontend Development Libraries course.
+The project employed the use of html, css, and javascript to achieve the required functionality. Also, a random quote API was used to generate random quotes.
