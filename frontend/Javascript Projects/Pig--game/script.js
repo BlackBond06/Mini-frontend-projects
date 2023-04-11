@@ -14,8 +14,15 @@ const btnHold = document.querySelector(".btn--hold");
 const previewImg = document.querySelector(".player--0--img");
 const fileInputs = document.querySelectorAll(".input");
 const defaultScore = 0;
+const closeModalButton = document.getElementById("close-modal");
+const modal = document.getElementById("modal");
+const displayWinner = document.getElementById("displayWinner");
 /* Game set to starting conditions on page load */
 
+closeModalButton.addEventListener("click", ()=> {
+  modal.style.display = "none";
+  init()
+});
 
 /* Each player selects image*/
 const loadImage = (e) => {
@@ -92,7 +99,7 @@ btnHold.addEventListener("click", () => {
     
     // check if player score >= 100
     
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 20) {
       playing = false;
       diceEl.classList.add("hidden");
       document
@@ -101,6 +108,10 @@ btnHold.addEventListener("click", () => {
       document
       .querySelector(`.player--${activePlayer}`)
       .classList.remove("player--active");
+     setTimeout(()=>{
+      modal.style.display = "block";
+      displayWinner.textContent = `Player ${activePlayer + 1} Wins!`
+     }, 1000)
     } else {
       switchPlayer();
     }
@@ -108,7 +119,4 @@ btnHold.addEventListener("click", () => {
 });
 
 btnNew.addEventListener("click", init);
-
-// console.log(activePlayer, currentScore);
-
 document.addEventListener("DOMContentLoaded", init());
