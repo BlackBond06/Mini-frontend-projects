@@ -58,6 +58,7 @@ main {
   margin: 15% auto;
   padding: 20px;
   border: 1px solid #888;
+  border-radius: 10px;
   width: 50%;
   height: 50%;
 }
@@ -271,6 +272,10 @@ main {
     padding: 4rem 0;
 
   }
+
+  .player--0 input{
+    z-index: -1;
+  }
   
   .player--1--img{
     position: absolute;
@@ -286,14 +291,36 @@ main {
     font-size: 2rem;
   }
 
+  #name--0{
+    position: absolute;
+    left: .5em;
+    top: 3em;
+  }
+  #name--1{
+
+    position: absolute;
+    right:.5em;
+    top: 3em;
+  }
+
   .score {
     font-size: 6rem;
-    margin-top: 6rem;
+  }
+
+  #score--0{
+    margin-top: 13.5rem;
+  }
+  #score--1{
+    margin-top:13.5rem;
+  }
+
+  .btn{
+    padding: 0.7rem 1.5rem;
   }
 
   .btn--new {
     font-size: 1.6rem;
-    top: 8rem;
+    top: 9rem; 
   }
 
 
@@ -304,7 +331,7 @@ main {
 
   .btn--hold {
     top: 37rem;
-    margin-left: 10rem;
-    width: 45%;
+    margin-left: 9rem;
+    width: 40%;
   }
 }
