@@ -17,11 +17,23 @@ const defaultScore = 0;
 const closeModalButton = document.getElementById("close-modal");
 const modal = document.getElementById("modal");
 const displayWinner = document.getElementById("displayWinner");
+let img = document.getElementById("cta--img");
+let img1 = document.getElementById("cta--img1");
+
+const imageDataURL = localStorage.getItem("player--1");
+const imageDataURL1 = localStorage.getItem("player--2");
+if (imageDataURL && imageDataURL1) {
+  // If there is, set the src attribute of the image to the data URL
+  img.src = imageDataURL;
+  img1.src = imageDataURL1;
+  
+}
+
 /* Game set to starting conditions on page load */
 
-closeModalButton.addEventListener("click", ()=> {
+closeModalButton.addEventListener("click", () => {
   modal.style.display = "none";
-  init()
+  init();
 });
 
 /* Each player selects image*/
@@ -29,20 +41,28 @@ const loadImage = (e) => {
   let id = e.target.id;
   let file = e.target.files[0];
   e.target.setAttribute("hidden", true);
-  if (!file) return;
-  let img = document.getElementById("cta--img");
-  let img1 = document.getElementById("cta--img1");
-  id === "input1"
-  ? (img.src = URL.createObjectURL(file))
-  : (img1.src = URL.createObjectURL(file));
+  const fr = new FileReader();
+  fr.readAsDataURL(file);
+  fr.addEventListener("load", ()=>{
+    const url = fr.result;
+    if(id === "input1"){
+      img.src = url;
+      localStorage.setItem("player--1", url);
+    }else{
+      img1.src = url;
+      localStorage.setItem("player--2", url);
+    }
+    
+  })
+ 
+  
 };
 
 fileInputs.forEach((input) => {
   input.addEventListener("change", loadImage);
 });
 
-let scores, currentScore, activePlayer, playing ;
-
+let scores, currentScore, activePlayer, playing;
 
 const init = () => {
   scores = [defaultScore, defaultScore];
@@ -62,7 +82,7 @@ const init = () => {
 
 const switchPlayer = () => {
   document.getElementById(`current--${activePlayer}`).textContent =
-  defaultScore;
+    defaultScore;
   currentScore = defaultScore;
   activePlayer = activePlayer === 0 ? 1 : 0;
   player0El.classList.toggle("player--active");
@@ -76,7 +96,7 @@ btnRoll.addEventListener("click", () => {
     /* display dice */
     diceEl.classList.remove("hidden");
     diceEl.src = `dice-${randomDice}.png`;
-    
+
     /* check if player rolled 1 */
     if (randomDice !== 1) {
       /* add dice to current score */
@@ -95,23 +115,23 @@ btnHold.addEventListener("click", () => {
     // Add score to active player
     scores[activePlayer] += currentScore;
     document.getElementById(`score--${activePlayer}`).textContent =
-    scores[activePlayer];
-    
+      scores[activePlayer];
+
     // check if player score >= 100
-    
+
     if (scores[activePlayer] >= 20) {
       playing = false;
       diceEl.classList.add("hidden");
       document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add("player--winner");
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add("player--winner");
       document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.remove("player--active");
-     setTimeout(()=>{
-      modal.style.display = "block";
-      displayWinner.textContent = `Player ${activePlayer + 1} Wins!`
-     }, 1000)
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove("player--active");
+      setTimeout(() => {
+        modal.style.display = "block";
+        displayWinner.textContent = `Player ${activePlayer + 1} Wins!`;
+      }, 1000);
     } else {
       switchPlayer();
     }
@@ -119,4 +139,7 @@ btnHold.addEventListener("click", () => {
 });
 
 btnNew.addEventListener("click", init);
-document.addEventListener("DOMContentLoaded", init());
+document.addEventListener("DOMContentLoaded", () => {
+  init();
+  // loadImage;
+});
