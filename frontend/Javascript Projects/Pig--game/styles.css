@@ -45,26 +45,36 @@ main {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  animation: bounce 3s infinite;
+  animation-delay: 3s;
+}
+
+
+.background-image {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .modal-content {
   position: relative;
-  background-color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+ color: white;
   border-radius: 10px;
   width: 50%;
   height: 50%;
+  background-image: url(./bg.webp);
 }
 
-#displayWinner{
+#displayWinner {
   font-size: 32px;
+ 
 }
 
 .close {
@@ -81,7 +91,6 @@ main {
   text-decoration: none;
   cursor: pointer;
 }
-
 
 .player {
   flex: 50%;
@@ -130,26 +139,26 @@ main {
   width: 90px;
 }
 
-.player--0--img{
+.player--0--img {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: gray;
 }
-.player--1--img{
+.player--1--img {
   width: 50px;
   height: 50px;
   background: gray;
   border-radius: 50%;
 }
 
-.player--0--img img{
+.player--0--img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
 }
-.player--1--img img{
+.player--1--img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -260,6 +269,36 @@ main {
   display: none;
 }
 
+@keyframes bounce {
+  from,
+  6.66%,
+  17.66%,
+  33.33% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+
+  13.33%,
+  14.33% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -30px, 0) scaleY(1.1);
+  }
+
+  23.33% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -15px, 0) scaleY(1.05);
+  }
+
+  26.66% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.95);
+  }
+
+  30% {
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+}
+
 /* Styling for small and medium screen sizes */
 @media only screen and (max-width: 560px) {
   main {
@@ -270,19 +309,18 @@ main {
   .player {
     flex: auto;
     padding: 4rem 0;
-
   }
 
-  .player--0 input{
+  .player--0 input {
     z-index: -1;
   }
-  
-  .player--1--img{
+
+  .player--1--img {
     position: absolute;
     right: 2rem;
     top: 1rem;
   }
-  .player--0--img{
+  .player--0--img {
     position: absolute;
     left: 2rem;
     top: 1rem;
@@ -291,15 +329,14 @@ main {
     font-size: 2rem;
   }
 
-  #name--0{
+  #name--0 {
     position: absolute;
-    left: .5em;
+    left: 0.5em;
     top: 3em;
   }
-  #name--1{
-
+  #name--1 {
     position: absolute;
-    right:.5em;
+    right: 0.5em;
     top: 3em;
   }
 
@@ -307,22 +344,21 @@ main {
     font-size: 6rem;
   }
 
-  #score--0{
+  #score--0 {
     margin-top: 13.5rem;
   }
-  #score--1{
-    margin-top:13.5rem;
+  #score--1 {
+    margin-top: 13.5rem;
   }
 
-  .btn{
+  .btn {
     padding: 0.7rem 1.5rem;
   }
 
   .btn--new {
     font-size: 1.6rem;
-    top: 9rem; 
+    top: 9rem;
   }
-
 
   .btn--roll {
     top: 37rem;
